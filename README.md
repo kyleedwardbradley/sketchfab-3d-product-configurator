@@ -1,6 +1,6 @@
 # sketchfab-3d-product-configurator
 
-This repo contains code for a 3D product configurator using the [Sketchfab Viewer API](https://sketchfab.com/developers/viewer) and a [demo of it](https://hornflakes.github.io/sketchfab-3d-product-configurator/src/app/index.html).
+This repo contains code for a 3D product configurator using the [Sketchfab Viewer API](https://sketchfab.com/developers/viewer) and a [demo of it](https://kyleedwardbradley.github.io/sketchfab-3d-product-configurator/src/app/index.html).
 
 ## What does it do?
 
