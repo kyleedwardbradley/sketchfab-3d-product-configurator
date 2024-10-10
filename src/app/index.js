@@ -40,7 +40,7 @@ for (let el of seatTextureSelectors) {
 modelViewerEl.setAttribute('data-url-id', '9c38a08933154e128bb550246285f9e4');
 modelViewerEl.setAttribute(
   'data-base-textures-url',
-  'https://hornflakes.github.io/sketchfab-3d-product-configurator/src/assets'
+  'https://kyleedwardbradley.github.io/sketchfab-3d-product-configurator/src/assets'
 );
 
 const backMaterialName = 'Velvet_Grey.003';
