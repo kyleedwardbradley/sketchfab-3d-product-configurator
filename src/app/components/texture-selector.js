@@ -28,84 +28,6 @@ class TextureSelector extends HTMLElement {
             image-src="assets/Velvet_Grey.003/Baloo_2073.jpg"
             class="material"
           ></selectable-image>
-
-          <selectable-image
-            id="bunny"
-            image-src="assets/Velvet_Grey.003/Bunny_203.01.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="casablanca"
-            image-src="assets/Velvet_Grey.003/Casablanca_2312.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="dream-velvet"
-            image-src="assets/Velvet_Grey.003/Dream_Velvet_202_39.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="eureka"
-            image-src="assets/Velvet_Grey.003/Eureka_2124.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="granada"
-            image-src="assets/Velvet_Grey.003/Granada_2721.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="hamilton"
-            image-src="assets/Velvet_Grey.003/Hamilton_2804.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="hygge"
-            image-src="assets/Velvet_Grey.003/Hygge_2539.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="kenia"
-            image-src="assets/Velvet_Grey.003/Kenia_702.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="kongo"
-            image-src="assets/Velvet_Grey.003/Kongo_721.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="magic-velvet"
-            image-src="assets/Velvet_Grey.003/Magic_Velvet_2216.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="prestige"
-            image-src="assets/Velvet_Grey.003/Prestige_2762.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="riviera"
-            image-src="assets/Velvet_Grey.003/Riviera_36.jpg"
-            class="material"
-          ></selectable-image>
-
-          <selectable-image
-            id="venus-velvet"
-            image-src="assets/Velvet_Grey.003/Venus_Velvet_2919.jpg"
-            class="material"
-          ></selectable-image>
         </div>
       </section>
 
@@ -137,10 +59,6 @@ class TextureSelector extends HTMLElement {
             class="color"
           ></selectable-image>
 
-          <selectable-image
-            image-src="assets/Velvet_Grey.003/Baloo_2084.jpg"
-            class="color"
-          ></selectable-image>
         </div>
 
         <div class="images colors bunny">
