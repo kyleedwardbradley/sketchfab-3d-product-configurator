@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sketchfab Configurator</title>
+        <title>3D Geological Model Viewer</title>
 
         <base href="../" />
 
@@ -18,247 +18,223 @@
     </head>
 
     <body>
-<!--         <model-viewer></model-viewer>
-        <form>
-            <div class="dropdown">
-                <header id="back" class="dropdown-header active">
-                    <h1>
-                        <b>Back</b>
-                    </h1>
-                    <img class="chevron" src="assets/icons/chevron-up.svg" />
-                </header>
-
-                <texture-selector checkmark-src="assets/icons/checkmark.svg" class="back"></texture-selector>
-            </div>
-
-            <label>
-                <strong>Hide back</strong>
-                <input type="checkbox" name="hide" />
-            </label>
-
-            <div class="dropdown">
-                <header id="seat" class="dropdown-header">
-                    <h1>
-                        <b>Seat</b>
-                    </h1>
-                    <img class="chevron" src="assets/icons/chevron-up.svg" />
-                </header>
-
-                <texture-selector checkmark-src="assets/icons/checkmark.svg" class="seat hidden"></texture-selector>
-            </div>
-        </form> -->
-        <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.7.1.js"></script>
-<div class="container" style="max-width:700px;">
-  <h3>3D animation using Sketchfab&nbsp;</h3>
-  <h4 id="sf_modelname"></h4>
-  <p>You can click, drag and scroll to zoom in and move around the model for a different view. </p>
-  <div>
-    <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-      <iframe style="position: absolute;top: 0; left: 0; width: 100%; height: 100%; border-color:#1d1d1d;;" src="" id="api-frame" allow="autoplay; fullscreen; vr" allowvr="" allowfullscreen="" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-    </div><br>
-    <!-- Initialize the viewer -->
-    <script type="text/javascript">
-      // -------------------------------------------------
-      // Developed by: Chris Richter chris@ricoshae.com.au
-      // -------------------------------------------------
-
-      // This code imports models from Sketchfab and allows a user to select different models from sketchfab into the viewer
-      // The code uses the Viewer API from Skethfab
-      // https://sketchfab.com/developers/viewer
-      // The code is designed to be used inside the Moodle framework
-      // if used outside the Moodle framework, you may need to import Bootstrap for the layout features
-
-      // Model references are stored in an array
-      // id - from the Sketchfab model URL
-      // title - is displayed above the model.
-      //
-      var iframe = document.getElementById('api-frame');
-      var model = [];
-      model['main'] = {
-        id: '9c38a08933154e128bb550246285f9e4',
-        title: 'Chip Packets',
-        slider: true
-      };
-
-
-      var camerapos;
-      var modelname = "Model name"; // used as variable for the current selected model
-
-      // By default, the latest version of the viewer API will be used.
-      var client = new Sketchfab(iframe);
-
-      // Load a sketchfab model
-      function loadmodel(id) {
-        // Dispaly model name
-        client.init(id, {
-          ui_inspector: 0,
-          ui_vr: 0,
-          success: function onSuccess(api) {
-            api.start();
-            api.addEventListener('viewerready', function() {
-
-            });
-          }
-        })
-      }
-
-      var btn_1_state=1
-      var btn_2_state=1
-      var btn_3_state=1
-      var btn_4_state=1
         
-      var allmaterials; // all materials for the current loaded module are stored here to reference model layers name and id
-      client.init(model['main'].id, {
-        ui_inspector: 0,
-        ui_vr: 0,
-        success: function onSuccess(api) {
-          document.getElementById('model-btn-1').addEventListener('click', function() {
-            if (btn_1_state==1) {
-                hidematerial('FocalTexture', api);
-                btn_1_state=0;
-            } else {
-                showmaterial('FocalTexture', api);
-                btn_1_state=1;
-            }
-          });
-          document.getElementById('model-btn-2').addEventListener('click', function() {
-            if (btn_2_state==1) {
-                hidematerial('PointCloud_1', api);
-                hidematerial('PointCloud_2', api);
-                btn_2_state=0;
-            } else {
-                showmaterial('PointCloud_1', api);
-                showmaterial('PointCloud_2', api);
-                btn_2_state=1;
-            }          
-          });
+        <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.7.1.js"></script>
+            <div class="container" style="max-width:700px;">
+          <h3>3D animation using Sketchfab&nbsp;</h3>
+          <h4 id="sf_modelname"></h4>
+          <p>You can click, drag and scroll to zoom in and move around the model for a different view. </p>
+          <div>
+            <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+              <iframe style="position: absolute;top: 0; left: 0; width: 100%; height: 100%; border-color:#1d1d1d;;" src="" id="api-frame" allow="autoplay; fullscreen; vr" allowvr="" allowfullscreen="" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div><br>
+            <!-- Initialize the viewer -->
+            <script type="text/javascript">
 
-          document.getElementById('model-btn-3').addEventListener('click', function() {
-            if (btn_3_state==1) {
-                hidematerial('ColoredIntensity', api);
-                btn_3_state=0;
-            } else {
-                showmaterial('ColoredIntensity', api);
-                btn_3_state=1;
-            }
-          });
+              // Kyle Bradley, based on code by Chris Richter chris@ricoshae.com.au
 
-          document.getElementById('model-btn-4').addEventListener('click', function() {
-            if (btn_4_state==1) {
-                hidematerial('SCECFaultSurface', api);
-                btn_4_state=0;
-            } else {
-                showmaterial('SCECFaultSurface', api);
-                btn_4_state=1;
-            }
-          });
-          //   document.getElementById('sf_modelname').innerHTML = modelname; // model name
-          api.start();
-          api.addEventListener('viewerready', function() {
-
-            var html = "";
-            // API is ready to use
-            // Get initial material list for the model
-            api.getMaterialList(function(err, materials) {
-              if (!err) {
-                allmaterials = materials;
-                const divs = document.querySelectorAll('.apirb');
-                // attach change listener to radio buttons to load models
-                divs.forEach(el => el.addEventListener('change', function() {
-                  // if 'reet' then recentre the model
-                  if (this.value == 'reset') {
-                    resetmodel();
-                  } else {
-                    // otherwise  - load the model into the view
-                    modelname = "You are looking at the " + model[this.value].title;
-                    loadmodel(model[this.value].id);
+              // Model references are stored in an array
+              // id - from the Sketchfab model URL
+              // title - is displayed above the model.
+              //
+              var iframe = document.getElementById('api-frame');
+              var model = [];
+              model['main'] = {
+                id: '9c38a08933154e128bb550246285f9e4',
+                title: 'Unused Title',
+                slider: true
+              };
+        
+              // var camerapos;
+              // var modelname = "Model name"; // used as variable for the current selected model
+        
+              // By default, the latest version of the viewer API will be used.
+              var client = new Sketchfab(iframe);
+        
+              // Load a sketchfab model
+              function loadmodel(id) {
+                client.init(id, {
+                  ui_inspector: 0,
+                  ui_vr: 0,
+                  success: function onSuccess(api) {
+                    api.start();
+                    api.addEventListener('viewerready', function() {
+                    });
                   }
-                }));
-                // display all materials for reference - comment out for production
-                console.log(materials);
+                })
               }
-            });
-            // reset camera view
-            function resetcamera() {
-              api.recenterCamera(function(err) {
-                // console.log(err);
+
+              // It would be great to procedurally generate buttons from texture names
+              
+              var btn_1_state=1
+              var btn_2_state=1
+              var btn_3_state=1
+              var btn_4_state=1
+                
+              var allmaterials; // collection of all materials in the loaded model
+                
+              client.init(model['main'].id, {
+                ui_inspector: 0,
+                ui_vr: 0,
+                success: function onSuccess(api) {
+                    
+                  // Add functions to the HTML buttons
+                    
+                  document.getElementById('model-btn-1').addEventListener('click', function() {
+                    // Keep track of the toggle status of the button and use it to on/off the texture
+                    if (btn_1_state==1) {
+                        hidematerial('FocalTexture', api);
+                        btn_1_state=0;
+                    } else {
+                        showmaterial('FocalTexture', api);
+                        btn_1_state=1;
+                    }
+                  });
+                  document.getElementById('model-btn-2').addEventListener('click', function() {
+                    if (btn_2_state==1) {
+                        hidematerial('PointCloud_1', api);
+                        hidematerial('PointCloud_2', api);
+                        btn_2_state=0;
+                    } else {
+                        showmaterial('PointCloud_1', api);
+                        showmaterial('PointCloud_2', api);
+                        btn_2_state=1;
+                    }          
+                  });
+        
+                  document.getElementById('model-btn-3').addEventListener('click', function() {
+                    if (btn_3_state==1) {
+                        hidematerial('ColoredIntensity', api);
+                        btn_3_state=0;
+                    } else {
+                        showmaterial('ColoredIntensity', api);
+                        btn_3_state=1;
+                    }
+                  });
+        
+                  document.getElementById('model-btn-4').addEventListener('click', function() {
+                    if (btn_4_state==1) {
+                        hidematerial('SCECFaultSurface', api);
+                        btn_4_state=0;
+                    } else {
+                        showmaterial('SCECFaultSurface', api);
+                        btn_4_state=1;
+                    }
+                  });
+
+                  // Start the Sketchfab model
+                  api.start();
+                  api.addEventListener('viewerready', function() {
+        
+                    var html = "";
+                    // API is ready to use
+                      
+                    // Get the material list from the model
+                    api.getMaterialList(function(err, materials) {
+                      if (!err) {
+                        allmaterials = materials;
+                        const divs = document.querySelectorAll('.apirb');
+                        // attach change listener to radio buttons to load models
+                        divs.forEach(el => el.addEventListener('change', function() {
+                          // if 'reset' then recenter the model
+                          if (this.value == 'reset') {
+                            resetmodel();
+                          } else {
+                            // otherwise  - load the model into the view
+                            // modelname = "You are looking at the " + model[this.value].title;
+                            loadmodel(model[this.value].id);
+                          }
+                        }));
+                        // display all materials for reference - comment out for production
+                        console.log(materials);
+                      }
+                    });
+                      
+                    // reset camera view
+                    function resetcamera() {
+                      api.recenterCamera(function(err) {
+                        // console.log(err);
+                      });
+                    }
+                  });
+        
+                },
+                error: function onError() {
+                  // console.log('Viewer error');
+                }
               });
+        
+              function hidematerial(materialname, api) {
+                var materialToUpdate = allmaterials[getmaterialbyname(materialname)];
+                materialToUpdate.channels.Opacity.enable = true;
+                materialToUpdate.channels.Opacity.factor = 0;
+                api.setMaterial(materialToUpdate);
+              }
+        
+              function showmaterial(materialname, api) {
+                var materialToUpdate = allmaterials[getmaterialbyname(materialname)];
+                materialToUpdate.channels.Opacity.enable = true;
+                materialToUpdate.channels.Opacity.factor = 1;
+                api.setMaterial(materialToUpdate);
+              }
+        
+              // Extra functions
+            
+              // Add a class to an element
+              function addClass(id, classname) {
+                var element = document.getElementById(id);
+                element.classList.add(classname);
+              }
+                
+              // remove a class from an element
+              function removeClass(id, classname) {
+                var element = document.getElementById(id);
+                element.classList.remove(classname);
+              }
 
-            }
-          });
-
-        },
-        error: function onError() {
-          // console.log('Viewer error');
-        }
-      });
-
-      function hidematerial(materialname, api) {
-        var materialToUpdate = allmaterials[getmaterialbyname(materialname)];
-        materialToUpdate.channels.Opacity.enable = true;
-        materialToUpdate.channels.Opacity.factor = 0;
-        api.setMaterial(materialToUpdate);
-      }
-
-      function showmaterial(materialname, api) {
-        var materialToUpdate = allmaterials[getmaterialbyname(materialname)];
-        materialToUpdate.channels.Opacity.enable = true;
-        materialToUpdate.channels.Opacity.factor = 1;
-        api.setMaterial(materialToUpdate);
-      }
-
-      // -------  START EXTRA FUNCTIONS ----------
-      // Reset to 0 on reload
-      // add a class to an element
-      function addClass(id, classname) {
-        var element = document.getElementById(id);
-        element.classList.add(classname);
-      }
-      // remove a class from an element
-      function removeClass(id, classname) {
-        var element = document.getElementById(id);
-        element.classList.remove(classname);
-      }
-      // get material id by name
-      function getmaterialbyname(name) {
-        for (var i = 0; i < allmaterials.length; i++) {
-          if (allmaterials[i].name === name) {
-            return i;
-          }
-        }
-        return null; // return null if material is not found
-      }
-
-
-      // -------  END EXTRA FUNCTIONS ----------
-
-    </script>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <button value="male" name="r1" id="model-btn-1">
-        Focal mechanisms</button>
-    </div>
-    <div class="col-3">
-      <button value="female" name="r1" id="model-btn-2">
-        Hypocenters</button>
-    </div>
-    <div class="col-3">
-      <button value="female" name="r1" id="model-btn-3">
-        Terrain</button>
-    </div>
-    <div class="col-3">
-      <button value="female" name="r1" id="model-btn-4">
-        3D Faults</button>
-    </div>
-  </div>
-<!--   <div class="row">
-    <div class="col-3">
-      <button class="apirb" value="reset" id="resetmodel">
-        Reset model</button>
-    </div>
-  </div> -->
-</div>
+              // This function should eventually return a list of indexes so that multiple materials
+              // matching the given name can be adjusted.
+                
+              // get material id by name
+              function getmaterialbyname(name) {
+                for (var i = 0; i < allmaterials.length; i++) {
+                  if (allmaterials[i].name === name) {
+                    return i;
+                  }
+                }
+                return null; // return null if material is not found
+              }
+        
+        
+            // -------  END EXTRA FUNCTIONS ----------
+        
+            </script>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <button value="male" name="r1" id="model-btn-1">
+                Focal mechanisms</button>
+            </div>
+            <div class="col-3">
+              <button value="female" name="r1" id="model-btn-2">
+                Hypocenters</button>
+            </div>
+            <div class="col-3">
+              <button value="female" name="r1" id="model-btn-3">
+                Terrain</button>
+            </div>
+            <div class="col-3">
+              <button value="female" name="r1" id="model-btn-4">
+                3D Faults</button>
+            </div>
+          </div>
+        <!--   <div class="row">
+            <div class="col-3">
+              <button class="apirb" value="reset" id="resetmodel">
+                Reset model</button>
+            </div>
+          </div> -->
+        </div>
     </body>
 
     <script type="text/javascript" src="app/index.js"></script>
