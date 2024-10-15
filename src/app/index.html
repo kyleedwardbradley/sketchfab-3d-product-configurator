@@ -102,13 +102,20 @@
         })
       }
 
+      var btn_1_state=1
       var allmaterials; // all materials for the current loaded module are stored here to reference model layers name and id
       client.init(model['main'].id, {
         ui_inspector: 0,
         ui_vr: 0,
         success: function onSuccess(api) {
           document.getElementById('model-btn-1').addEventListener('click', function() {
-            hidematerial('FocalTexture', api);
+            if (btn_1_state==1) {
+                hidematerial('FocalTexture', api);
+                btn_1_state=0;
+            } else {
+                showmaterial('FocalTexture', api);
+                btn_1_state=1;
+            }
           });
           document.getElementById('model-btn-2').addEventListener('click', function() {
             showmaterial('FocalTexture', api);
@@ -210,7 +217,7 @@
   <div class="row">
     <div class="col-3">
       <button value="male" name="r1" id="model-btn-1">
-        Hide focal mechanisms</button>
+        Hide/show focal mechanisms</button>
     </div>
     <div class="col-3">
       <button value="female" name="r1" id="model-btn-2">
