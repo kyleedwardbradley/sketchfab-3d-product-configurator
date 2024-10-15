@@ -103,6 +103,8 @@
       }
 
       var btn_1_state=1
+      var btn_2_state=1
+        
       var allmaterials; // all materials for the current loaded module are stored here to reference model layers name and id
       client.init(model['main'].id, {
         ui_inspector: 0,
@@ -118,19 +120,35 @@
             }
           });
           document.getElementById('model-btn-2').addEventListener('click', function() {
-            showmaterial('FocalTexture', api);
+            if (btn_2_state==1) {
+                hidematerial('PointCloud_1', api);
+                hidematerial('PointCloud_2', api);
+                btn_2_state=0;
+            } else {
+                showmaterial('PointCloud_1', api);
+                showmaterial('PointCloud_2', api);
+                btn_2_state=1;
+            }          
           });
 
           document.getElementById('model-btn-3').addEventListener('click', function() {
-
-            hidematerial('Lays - Flaming_Hot', api);
-            hidematerial('Lays - Chile_Limon', api);
+            if (btn_3_state==1) {
+                hidematerial('ColoredIntensity', api);
+                btn_3_state=0;
+            } else {
+                showmaterial('ColoredIntensity', api);
+                btn_3_state=1;
+            }
           });
 
           document.getElementById('model-btn-4').addEventListener('click', function() {
-
-            showmaterial('Lays - Flaming_Hot', api);
-            showmaterial('Lays - Chile_Limon', api);
+            if (btn_4_state==1) {
+                hidematerial('SCECFaultSurface', api);
+                btn_4_state=0;
+            } else {
+                showmaterial('SCECFaultSurface', api);
+                btn_4_state=1;
+            }
           });
           //   document.getElementById('sf_modelname').innerHTML = modelname; // model name
           api.start();
@@ -217,27 +235,27 @@
   <div class="row">
     <div class="col-3">
       <button value="male" name="r1" id="model-btn-1">
-        Hide/show focal mechanisms</button>
+        Focal mechanisms</button>
     </div>
     <div class="col-3">
       <button value="female" name="r1" id="model-btn-2">
-        Show focal mechanisms</button>
+        Hypocenters</button>
     </div>
     <div class="col-3">
       <button value="female" name="r1" id="model-btn-3">
-        Hide both 1 and 2</button>
+        Terrain</button>
     </div>
     <div class="col-3">
       <button value="female" name="r1" id="model-btn-4">
-        Show both 1 and 2</button>
+        3D Faults</button>
     </div>
   </div>
-  <div class="row">
+<!--   <div class="row">
     <div class="col-3">
       <button class="apirb" value="reset" id="resetmodel">
         Reset model</button>
     </div>
-  </div>
+  </div> -->
 </div>
     </body>
 
