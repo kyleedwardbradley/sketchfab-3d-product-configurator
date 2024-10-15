@@ -107,16 +107,11 @@
         ui_inspector: 0,
         ui_vr: 0,
         success: function onSuccess(api) {
-          //   document.getElementById('sf-tn-description').innerHTML = 'Dog body'; // slider description					// add listeners to buttons
           document.getElementById('model-btn-1').addEventListener('click', function() {
-
-            hidematerial('Lays - Flaming_Hot', api);
-            showmaterial('Lays - Chile_Limon', api);
+            hidematerial('FocalTexture', api);
           });
           document.getElementById('model-btn-2').addEventListener('click', function() {
-
-            showmaterial('Lays - Flaming_Hot', api);
-            hidematerial('Lays - Chile_Limon', api);
+            showmaterial('FocalTexture', api);
           });
 
           document.getElementById('model-btn-3').addEventListener('click', function() {
@@ -215,11 +210,11 @@
   <div class="row">
     <div class="col-3">
       <button value="male" name="r1" id="model-btn-1">
-        Hide packet 1, show Packet 2</button>
+        Hide focal mechanisms</button>
     </div>
     <div class="col-3">
       <button value="female" name="r1" id="model-btn-2">
-        Hide packet 2, Show Packet 1</button>
+        Show focal mechanisms</button>
     </div>
     <div class="col-3">
       <button value="female" name="r1" id="model-btn-3">
