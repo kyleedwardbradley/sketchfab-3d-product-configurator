@@ -134,6 +134,7 @@
                       if (!err) {
                         allmaterials = materials;
                         const divs = document.querySelectorAll('.apirb');
+                          
                         // attach change listener to radio buttons to load models
                         divs.forEach(el => el.addEventListener('change', function() {
                           // if 'reset' then recenter the model
@@ -240,12 +241,12 @@
                 3D Faults</button>
             </div>
           </div>
-        <!--   <div class="row">
+          <div class="row">
             <div class="col-3">
               <button class="apirb" value="reset" id="resetmodel">
                 Reset model</button>
             </div>
-          </div> -->
+          </div>
         </div>
     </body>
 
